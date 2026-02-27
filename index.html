@@ -1,1 +1,840 @@
-placeholder
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WHITE ROOM — מיכאל מישקה מלמדוב</title>
+<meta name="description" content="WHITE ROOM — ריטריט עבודה, חקירה וניסוי. Invoking the unconscious. מרץ 2026, תל אביב.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Assistant:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Assistant','Heebo',sans-serif;background:#fff;color:#1a1a1a;line-height:1.85;direction:rtl;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Frank Ruhl Libre',serif;font-weight:300}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:780px;margin:0 auto;padding:0 24px}
+.section{padding:80px 0}
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.sep{width:50px;height:1px;background:#ccc;margin:48px auto}
+.tc{text-align:center}
+
+/* Nav */
+.topnav{position:fixed;top:0;right:0;left:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);padding:14px 24px;display:flex;justify-content:center;gap:28px;font-size:.82rem;transform:translateY(-100%);transition:transform .3s;border-bottom:1px solid rgba(0,0,0,.05)}
+.topnav.visible{transform:translateY(0)}
+.topnav a{color:#666;transition:color .3s}.topnav a:hover{color:#1a1a1a}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;position:relative}
+
+/* Eye symbol */
+.eye-symbol{font-size:2rem;color:#333;margin-bottom:8px;opacity:.7}
+
+/* Latin quote - option 2: small rectangular stone */
+.stone-quote{display:inline-block;background:linear-gradient(135deg,#8a7e6e,#6b6156,#8a7e6e);padding:14px 32px;text-align:center;margin-bottom:48px;border-radius:3px;position:relative;overflow:hidden}
+.stone-quote::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E");opacity:.3}
+.stone-quote p{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.5vw,1.4rem);color:#e8e0d4;letter-spacing:.12em;position:relative;z-index:1;line-height:1.6}
+
+/* Circle symbol */
+.circle-symbol{width:48px;height:48px;border-radius:50%;border:2px solid #1a1a1a;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+.circle-symbol .inner{width:24px;height:24px;border-radius:50%;background:#1a1a1a}
+
+/* Beta sticker */
+.beta{display:inline-block;background:#c0392b;color:#fff;font-size:.7rem;padding:3px 10px;border-radius:12px;transform:rotate(-5deg);margin-right:8px;font-weight:600}
+
+/* TV frame - retro CRT */
+.tv-frame{max-width:640px;margin:40px auto;position:relative;background:linear-gradient(145deg,#2a2a2a,#1a1a1a,#0d0d0d);border-radius:24px;padding:28px 28px 52px;box-shadow:0 8px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.05)}
+.tv-frame::before{content:'';position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:12px;width:60px}
+.tv-frame::after{content:'';position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:10px;height:10px;background:radial-gradient(circle,#c0392b,#8b0000);border-radius:50%;box-shadow:24px 0 0 #333,-24px 0 0 #333,0 0 6px rgba(192,57,43,.4)}
+.tv-frame iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:12px;display:block;box-shadow:inset 0 0 30px rgba(0,0,0,.5)}
+
+/* Theme box */
+.theme-box{border:1px solid #ddd;padding:32px;text-align:center;margin:40px auto;max-width:500px;border-radius:2px}
+.theme-box .theme-label{font-size:.8rem;color:#888;margin-bottom:8px}
+.theme-box .theme-title{font-family:'Frank Ruhl Libre',serif;font-size:1.3rem;direction:ltr}
+.theme-box .theme-he{font-size:1.1rem;margin-top:4px}
+.theme-box .theme-date{font-size:.9rem;color:#666;margin-top:12px}
+.theme-box .theme-sub{font-size:.95rem;color:#555;margin-top:4px}
+
+/* Section titles */
+.stitle{font-family:'Frank Ruhl Libre',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:300;text-align:center;margin-bottom:40px}
+
+/* Invitation */
+.invitation{font-size:1.05rem;line-height:2}
+.invitation .sig{font-style:italic;margin-top:32px;color:#555}
+
+/* Quote block */
+.quote-block{border-right:3px solid #ccc;padding:16px 24px;margin:32px 0;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:#444;direction:ltr;text-align:left}
+
+/* Expandable */
+.expandable{border-bottom:1px solid #eee;margin-bottom:0}
+.expandable-header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;cursor:pointer;user-select:none}
+.expandable-header h3{font-size:1.1rem;font-weight:400}
+.expandable-icon{font-size:1.4rem;color:#999;transition:transform .3s}
+.expandable-icon::after{content:'+'}
+.expandable.open .expandable-icon::after{content:'−'}
+.expandable-content{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.expandable.open .expandable-content{max-height:8000px}
+.expandable-content-inner{padding:0 0 24px}
+
+/* Rabbit */
+.rabbit{position:relative;display:inline-block;cursor:pointer;opacity:.3;transition:opacity .3s;font-size:1.2rem;margin:20px}
+.rabbit:hover{opacity:.8}
+
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;align-items:center;justify-content:center;cursor:pointer}
+.modal-overlay.active{display:flex}
+.modal-overlay img{max-width:90vw;max-height:80vh;border-radius:50%;animation:slowspin 30s linear infinite}
+@keyframes slowspin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* Wisdom traditions */
+.wisdom{background:#0a0a0a;color:#e0d8cc;padding:80px 0}
+.wisdom .stitle{color:#e0d8cc}
+.wisdom-sub{margin-bottom:60px}
+.wisdom-sub h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;margin-bottom:16px;color:#f0e8dc}
+.wisdom-sub .icon{font-size:1.8rem;margin-bottom:8px;display:block;opacity:.6}
+.wisdom .expandable{border-bottom-color:#333}
+.wisdom .expandable-header h3{color:#d0c8bc}
+.wisdom .expandable-icon{color:#666}
+.wisdom .expandable-content-inner{color:#b0a898}
+.wisdom .expandable-content-inner p{margin-bottom:16px}
+
+/* Jung bg */
+.jung-section{position:relative}
+.jung-section::before{content:'';position:absolute;inset:0;background:url('https://mishka.co.il/wp-content/uploads/2025/10/jung07-ec55cf6b83af7c3f2227c7851fba9d36f85a29a9.jpg') center/cover no-repeat;opacity:.12;pointer-events:none;border-radius:8px}
+
+/* Not section */
+.not-section{background:#fafafa;padding:60px 0}
+.not-section .container{max-width:680px}
+
+/* About */
+.about-photo{width:140px;height:140px;border-radius:50%;background:#ddd;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#888;margin:0 auto 24px;font-family:'Frank Ruhl Libre',serif}
+
+/* Settings code */
+.settings-code{background:#0d0d0d;border-radius:8px;padding:24px;font-family:'Courier New',monospace;font-size:.9rem;color:#a0ffa0;direction:rtl}
+.settings-code .setting-line{padding:12px 0;border-bottom:1px solid #1a1a1a;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.settings-code .setting-line:last-child{border-bottom:none}
+.settings-code .setting-key{color:#80ff80}
+.settings-code .setting-val{color:#e0e0e0;margin-right:8px}
+.settings-code .setting-expand{max-height:0;overflow:hidden;transition:max-height .4s;color:#888;font-family:'Assistant',sans-serif;font-size:.85rem;line-height:1.7;padding:0 16px}
+.settings-code .setting-line.open + .setting-expand{max-height:3000px;padding:12px 16px}
+
+/* Logistics - wood texture */
+.logistics{background:linear-gradient(135deg,#f5efe6,#ebe3d5);padding:80px 0;position:relative}
+.logistics::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.02 .15' numOctaves='5' seed='2'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .4 0 0 0 0 .28 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23w)'/%3E%3C/svg%3E");pointer-events:none}
+.logistics .stitle{color:#4a3728}
+.logistics .container{background:rgba(255,252,245,.85);border:3px solid #8b6f47;border-radius:8px;padding:40px 32px;box-shadow:inset 0 0 20px rgba(139,111,71,.1),0 4px 20px rgba(0,0,0,.08);position:relative}
+.logistics .container::before{content:'';position:absolute;inset:4px;border:1px solid rgba(139,111,71,.3);border-radius:5px;pointer-events:none}
+
+/* Form */
+.reg-form{max-width:600px;margin:0 auto}
+.reg-form label{display:block;margin-bottom:6px;font-weight:600;font-size:.9rem}
+.reg-form input,.reg-form textarea,.reg-form select{width:100%;padding:12px;border:1px solid #ddd;border-radius:4px;font-family:'Assistant',sans-serif;font-size:1rem;margin-bottom:20px;direction:rtl}
+.reg-form textarea{min-height:100px;resize:vertical}
+.reg-form .checkbox-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:24px}
+.reg-form .checkbox-row input{width:auto;margin-top:4px}
+.big-red-btn{display:block;width:100%;padding:18px;background:#c0392b;color:#fff;border:none;border-radius:4px;font-size:1.2rem;font-family:'Frank Ruhl Libre',serif;cursor:pointer;transition:background .3s;letter-spacing:.05em}
+.big-red-btn:hover{background:#a93226}
+
+/* Credits */
+.credits{font-size:.8rem;color:#999;padding:40px 24px;max-width:780px;margin:0 auto}
+.credits h4{font-size:1rem;margin-bottom:12px;color:#666}
+.credits a{text-decoration:underline}
+
+footer{text-align:center;padding:40px 24px;font-size:.85rem;color:#aaa;border-top:1px solid #eee}
+
+/* Break visual */
+.visual-break{height:4px;background:linear-gradient(90deg,transparent,#1a1a1a,transparent);margin:0;opacity:.1}
+
+/* Responsive */
+@media(max-width:640px){
+.section{padding:60px 0}
+.tv-frame{margin:30px 16px;padding:12px 12px 30px}
+.topnav{gap:14px;font-size:.72rem}
+.stone-quote{padding:32px 20px}
+.stone-quote p{font-size:.9rem}
+.settings-code{font-size:.8rem;padding:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav" id="topNav">
+<a href="#invitation">הזמנה</a>
+<a href="#whatisit">מה זה</a>
+<a href="#traditions">מסורות</a>
+<a href="#about">מישקה</a>
+<a href="#setsetting">Set & Setting</a>
+<a href="#logistics">לוגיסטיקה</a>
+<a href="#register">הרשמה</a>
+</nav>
+
+<!-- SECTION 1: EYE + LATIN QUOTE -->
+<section class="hero">
+
+<div class="eye-symbol fade-in">𓂀</div>
+
+<div class="stone-quote fade-in">
+<p>VOCATUS ATQUE NON VOCATUS DEUS ADERIT</p>
+</div>
+
+<div style="height:64px"></div>
+
+<!-- Circle symbol -->
+<div class="circle-symbol fade-in">
+<div class="inner"></div>
+</div>
+
+<!-- Title -->
+<h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:300;letter-spacing:.15em;margin-bottom:16px" class="fade-in">WHITE ROOM</h1>
+
+<p style="font-size:1.15rem;color:#555;margin-bottom:4px" class="fade-in">ריטריט עבודה, חקירה וניסוי</p>
+<p style="font-size:.95rem;color:#777" class="fade-in">בניווט והחזקה של מיכאל מישקה מלמדוב <span class="beta">בהרצה</span></p>
+
+<!-- TV with Matrix scene -->
+<div class="tv-frame fade-in">
+<iframe src="https://www.youtube-nocookie.com/embed/UqMT2ZSeWYk?autoplay=1&mute=1&loop=1&playlist=UqMT2ZSeWYk&controls=0" allowfullscreen allow="autoplay"></iframe>
+</div>
+
+<!-- Theme box -->
+<div class="theme-box fade-in" id="theme-box">
+<div class="theme-label">נושא (theme) ה-WHITE ROOM הנוכחי:</div>
+<div class="theme-title">Invoking the unconscious | מזמנים את ה-לא מודע</div>
+<div class="theme-sub">מסע דרך פירורי הלחם שהשאיר לנו קארל יונג</div>
+<div class="theme-date">12-13-14 למרץ 2026</div>
+</div>
+
+</section>
+
+<div class="visual-break"></div>
+
+<!-- SECTION 3: INVITATION -->
+<section class="section" id="invitation">
+<div class="container fade-in">
+<h2 class="stitle">זוהי הזמנה</h2>
+
+<div class="invitation">
+<p>היי, מיכאל, מישקה, כאן.</p>
+<p>אני מניח ששמת לב,<br>
+מתרחשת לה איזו טרללת בתוך המציאות, החום עולה, הקצב עולה.<br>
+זה לא שהגלים האלו לא שטפו את החוף כבר קודם,<br>
+נראה שתמיד משהו בעבע לו מתחת לפני השטח,<br>
+רק שעכשיו.. זה צף וזה צף מהר.</p>
+
+<p>מרגיש שאנחנו כבר לא מצליחים לאחוז ולגרום למציאות לעשות לנו היגיון במהירות שהרכבת דוהרת בו כרגע.<br>
+נראה שהחמצן באוויר והביטים בדיגיטל כבר לא מספיקים לנו כדי לנשום עם איזו נחת את מה שמתרחש.</p>
+
+<p>זה נראה כי המבנים והמסגרות מבקשים ומבקשות להתפרק.<br>
+גם מחוצה לנו, במבנה של הקולקטיבי שאנחנו מסכימים להחזיק כחברה וכאנושות<br>
+וגם בתוך המטריקסים הפרטיים והפנימיים שלנו.</p>
+
+<!-- Cosmos embed - animated gif/video -->
+<div style="text-align:center;margin:32px 0">
+<video src="https://cdn.cosmos.so/055a7b06-1e2c-4990-9bfa-a25629a6ba13.mp4" autoplay muted loop playsinline style="width:100%;max-width:480px;border-radius:8px"></video>
+</div>
+
+<p>משהו מנענע לנו את עגלת התינוק שלנו ולא ממש מאפשר לנו להמשיך לישון בשקט.</p>
+
+<p>ובתוך המציאות הזו ברמה האישית שלי, רוב הדברים מתחילים לנשור, כל מה שלא אמיתי וראוי מוביל אותי דיי מהר (אם אני אמיץ להביט) לתחושה של אימפוטנציה וריקות שמובילים לאלחוש.<br>
+ולעומת זאת, ישנם דברים שנשארים עומדים. עניינים שמרגיש שראוי לעסוק בהם, שהם אמיתיים עבורי.</p>
+
+<p>ואחד מאותם המעשים שמרגישים לי ראויים הוא להיפגש עם אנשים שמבקשים בצורה כנה,<br>
+עוד אינטימיות עם עצמם ועם אחרים,<br>
+עוד אנרגיה של לב להיפגש בה בתוך עצמם ועם עוד אנשים סביבם,<br>
+עוד איזו התקרבות לחלקים האותנטיים שבתוכם<br>
+ואולי גם להתקרב, לשאת תפילה ואולי לחדש משהו עם הנשגב.</p>
+
+<p>קבוצה שמגיעה עם אומץ לעשות עבודה יחד.<br>
+לפגוש את הקצוות של מה שהם ולהטיל ספק יחד,<br>
+להתנדנד יחד עם עגלת התינוק,<br>
+להתחבר למקצב של הטלטול ולא לנסות להתגבר עליו.</p>
+
+<p>ה-White Room הזה שאני מריץ (והוא עצמו בהרצה) הוא הזמנה להצטרף למרחב שמתיימר ומבקש להביא עוד מאלו יחד עם עוד אנשים.<br>
+מרחב בו אנחנו מבקשים להיפגש יחד עם איזה עומק ושורשים שכבר נוכחים סביבנו וזמינים ובנו<br>
+וביחד לחדש משהו תוך כדי ה-chaos המודרני שנמצא סביבנו.</p>
+
+<div class="quote-block">
+"The task is to give birth to the old in a new time."<br>
+— C.G.Jung, The Liber Novus
+</div>
+
+<p class="sig">זוהי הזמנה להיפגש יחד בקבוצה ולעשות עבודה משותפת</p>
+</div>
+</div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SECTION 4: WHAT IS WHITE ROOM -->
+<section class="section" id="whatisit">
+<div class="container fade-in">
+<h2 class="stitle">מה הוא WHITE ROOM?</h2>
+
+<p>בסרט ה-Matrix מורפיוס מכניס את ניאו לתוך מרחב שמוצג לנו ויזואלית כמרחב לבן.<br>
+המרחב הלבן המדובר נקרא בסרט "The Construct״ שבתרגום חופשי אומר ״החלל הבנוי״ או ״המבנה״.<br>
+הקונסטרקט הזה הוא מרחב ניטרלי שנמצא מחוץ למייטריקס הבולע והמסמם אבל הוא גם לא ממש בתוך העולם האמיתי שעשוי לעורר בעתה ובהלה. הוא נמצא בתווך שבין-לבין.<br>
+הוא מבודד, שקט וגם מוגן יותר.<br>
+ה-WHITE ROOM הזה מתחיל כקונטיינר, חלל ריק שלתוכו הם ׳טוענים׳ תוכנות שונות ואלמנטים שונים שמתחילים ליצור את העניין, החיכוך, האימון, הלימוד של ה-חניכים.</p>
+
+<p>הוא נועד לעזור לתהליך ההתעוררות, הלימוד, האימון והאינטגרציה של ניאו ושל האחרים.</p>
+
+<div class="sep"></div>
+
+<p>ובהקשרנו,<br>
+WHITE ROOMS שאני מזמין אותנו אליהם הם מסעות בני מספר ימים בהם אנחנו עושים retreat (ריטריט), נסיגה, מהעולם בחוץ ונכנסים לתוך קונסטרקט לעשות עבודה יחד.<br>
+בכל WHITE ROOM אנחנו נכנסים לתוך קונטיינר ספציפי וייחודי שיש לו Set & Setting שמגדירים לנו את הנושא המרכזי סביבו נחוג (theme), את הכלים השונים, את מסורות החוכמה שילוו אותנו וגבולות גזרה שונים.<br>
+(עוד על הסט והסטינג הספציפיים של ה-White Room הזה למטה)</p>
+
+<p>ה-WHITE ROOMS אלו חללים בהם אנחנו מתבודדים מהמייטריקס, מהטרלול שמתרחש כרגע בחוץ יחד, יוצרים קונטיינר משותף ונכנסים בעומקים שונים לתוך ׳הקוד מקור׳ של המציאות שלנו.<br>
+עושים עבודה של Reconditioning (התניה מחדש), יוצרים נקודות ייחוס חדשות למצבי תודעה שונים,<br>
+פותחים אפשרויות חדשות למה זה לחוש ולהרגיש, מקלפים שכבות ומאפשרים למה שנסתר מאיתנו להדריך אותנו ולהציג את עצמו לפנינו.<br>
+אנחנו לומדים עוד על הרוחב והעומק של ה-Human Experience.</p>
+
+<p>ואם מזדמן לנו ואם מתמזל לנו - אולי גם פוגשים אהבה עמוקה וקדושה.</p>
+
+<p>זה נראה שלאורך ההיסטוריה האנושית שעבודה עמוקה מהסוג הזה נעשתה בתצורות שונות.<br>
+בהתבודדויות אישיות, בחניכה אישית של חונך לחניך ובעבודה קבוצתית.<br>
+חלק מהעבודה הזאת נעשתה ונעשית גם בבתי ספר למיסתורין וחניכה ובמקדשים שונים.</p>
+
+<!-- Rosa Celeste - Gustave Doré -->
+<div style="text-align:center;margin:48px 0 24px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Paradiso_Canto_31.jpg/800px-Paradiso_Canto_31.jpg" alt="Rosa Celeste: Dante and Beatrice gaze upon the highest Heaven, The Empyrean — Gustave Doré" title="Rosa Celeste: Dante and Beatrice gaze upon the highest Heaven, The Empyrean — Gustave Doré" style="max-width:420px;width:100%;border-radius:4px;opacity:.85;cursor:help;transition:opacity .3s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.85'" loading="lazy">
+</div>
+</div>
+</section>
+
+<!-- SECTION 5: SPONTANEOUS MEETING -->
+<section class="section" style="position:relative;overflow:hidden">
+<div style="position:absolute;inset:0;z-index:0;opacity:.08">
+<iframe src="https://www.youtube-nocookie.com/embed/rtDaJR78-K8?autoplay=1&mute=1&loop=1&playlist=rtDaJR78-K8&controls=0" style="width:120%;height:120%;position:absolute;top:-10%;right:-10%;border:none;pointer-events:none" allow="autoplay"></iframe>
+</div>
+<div class="container fade-in" style="position:relative;z-index:1">
+<h2 class="stitle">WHITE ROOM הוא מפגש ספונטני בין קבוצה של אנשים בתוך הרובד המידי של המציאות שמגיעים לעשות עבודה יחד.</h2>
+
+<p>עבור קארל יונג, טיפול/אנאליזה הוא למעשה מפגש ספונטני בין אנשים.</p>
+
+<p>הספונטניות היא תרגום של איכות שאנחנו מזמינים לחלל ומבקשים ממנה להוביל אותנו.<br>
+האיכות הזו היא האיכות הייחודית של הכאן ועכשיו.<br>
+איכות שנמצאת בתוך הרובד המידי של המציאות.</p>
+
+<p>כשה-כאן והעכשיו מובילים אותנו,<br>
+כשמה שמתרחש פה מוביל אותנו,<br>
+אנחנו נאלצים ונדרשים להתמסר אליו ולהיכנס לתוך mode, לתוך מצב הפעלה חדש שהוא פחות מתוכנן, פחות מוחזק, פחות מוגדר, פחות ודאי, פחות ברור.<br>
+הטקטיקות והאסטרטגיות, הפרסונות, המסכות מתבקשות לנוח ולאפשר למשהו אחר לבצבץ מאיתנו, ממש כמו לידה קטנה של מה שעכשיו רוצה לעבור דרכי.</p>
+
+<p>זאת מין גישה שמבקשת לצאת מתוך טבלאות של: ״אם.. ככה אז… ככה.. ״ ולעבור להתבוננות ישירה ותקשורת ישירה עם מה שמתרחש פה, בי, סביבי עכשיו בתוך הרובד המידי של המציאות.</p>
+
+<p>על פניו, זה נשמע פשוט להיכנס יחד קבוצה של אנשים לתוך ה-פה. במציאות עצמה אנחנו מכוסים בשכבות על גבי שכבות של הסתרות ושיריונות שאוחזים חזקות בניסיון לייצר ודאות ולהישאר בתוך מערכת ההפעלה היותר מוכרת שלנו.</p>
+
+<p>ה-WHITE ROOM הוא חלל שבו אנחנו מבקשים להתקרב עוד לתוך הרובד המידי של המציאות ולאפשר לנסתר, ל-לא מודע שלנו להדריך אותנו ולהציג עצמו.<br>
+זה מתבטא בכך שיש לנו מסגרת לנוע איתה אבל אנחנו קשובים יחד למה רוצה להתרחש ומה נדרש עכשיו בחלל. אנחנו משחקים עם ההגדרות של הקבוצה שלנו ועושים מהלכים שונים כדי להעצים תכונות ואלמנטים מסוימים או להנמיכם.</p>
+
+<p>זהו Gym, חדר כושר, שמזמין אותנו לפגוש את האדג׳ים (Edges) שלנו, את הקצוות. מקום שמאפשר לחלקים ומקומות בנו שאינם מקבלים מקום בתוך החיים עצמו לצוף ולהיראות.</p>
+
+<p>מדריכה אהובה שלי אומרת שאנחנו צריכים להפסיק לחפש את ה-שםאניזם ולהתחיל לעסוק ב-פהאיזם.<br>
+זה ידריך אותנו.</p>
+
+<p style="margin-top:24px;font-style:italic;color:#555">ה-WHITE ROOM נולד מתוך הצורך במבנה עבודה פתוח, כזה שמאפשר לחקור את הטרלול הנפלא של ה-Human Experience בלי לנסות לאלף אותו. כל ניסיון עבר שלי "לארוז" את המסתורין לתוך תבנית נוקשה של "ריטריט" הרגיש מלאכותי. אי אפשר למסגר את ה-Mystery בפרקטיקות קונקרטיות מדי. כאן ניכנס לחלל אמורפי יחסית, עם גבולות ברורים אך מינימליים, שמשאיר מקום לדבר האמיתי לקרות.</p>
+</div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SECTION 6: HOW IT LOOKS -->
+<section class="section" id="howit">
+<div class="container fade-in">
+<h2 class="stitle">איך זה נראה בפועל?<br><span style="font-size:.85em;color:#666">מה היא עבודת קבוצה?</span></h2>
+
+<!-- Cosmos embed as iframe/video per doc instructions -->
+<div style="text-align:center;margin:32px 0">
+<iframe src="https://www.cosmos.so/e/566120396" style="width:100%;max-width:500px;aspect-ratio:1/1;border:none;border-radius:8px" loading="lazy" allowfullscreen></iframe>
+</div>
+
+<p>כל אחד מאיתנו מגיע כאנטנה עם המטען הפרטי שלו;<br>
+עניינים שמעסיקים אותנו ומבקשים התייחסות.<br>
+חלקים שמבקשים להיראות. מצב רוח. אתגרים.<br>
+מתנות ויכולות וקודים.<br>
+כל אחד הוא קצת ׳כהן׳ שמצטרף לתוך מרחב עבודה משותף.<br>
+וכל אחד מגיע בתקווה עם התכווננות להעמיק.</p>
+
+<p>כל אחד הוא access point, נקודת גישה, עבור עצמו ועבור הקבוצה לאוקיינוס של רגשות, לחלל של מחשבות וידיעות, למיתוסים וסיפורים.<br>
+ועם ההקשבה הנכונה אנחנו נהיים זמינים אחד לשני או לשניה, כל אחד ואחת הם מפתח לי ולקבוצה לפגוש משהו.<br>
+אנחנו מאפשרים לעדינות הזו להציג את עצמה.</p>
+
+<p>כשיש קבוצה, כשיש אנשים נוספים, דברים הופכים ל-״אמיתיים יותר״.<br>
+יש הבדל בין להגיד משהו כשאני מול עצמי במחשבות בראש לבין להיכנס למרכז של מעגל כש-15 תודעות מתבוננות עליי ומחכות למשהו להתבטא דרכי.</p>
+
+<p>ברמה הקונקרטית,<br>
+אנחנו מתחילים את המסע שלנו יחד בתוך הקונטיינר שהוא קונטיינר פיזי בתוך חלל מתוחם וגם בתוך הקונטיינר האנרגטי.<br>
+אנחנו מתחילים ׳להגיע׳ לחלל דרך כל מני סשנים ומתחילים לאפשר למפגש ביננו להתממש.</p>
+
+<p>לאורך היום אנחנו מחזיקים ביחד את הישות המשותפת הזו של ה-׳אנחנו׳.<br>
+נכנסים יחד לתוך סשן ואז יוצאים להפסקה (break), ועוד סשן, ועוד ברייק וכן הלאה.<br>
+חלק מהסשנים הם לימוד בקבוצה, חלק מהם הם together alone, יוצאים למסע יחד אבל ביחידים. חלק מהסשנים הם בחלוקה לקבוצות קטנות וחלק כולם יחד.<br>
+בתוך הסשנים אנחנו עובדים עם טכנולוגיות תודעתיות שונות ומנווטים בתוך המרחב המשותף דרכן.</p>
+
+<p>יש לנו ארגז כלים עשיר מתוך הניסיון שלי יחד עם היצירתיות שלי, ויש את ״מזג האוויר״ של החדר – הספייס המשותף שנוצר בינינו.<br>
+העבודה כאן היא לא שינון או לימוד של שיטה אלא השתתפות כנה ואמתית בתוך הדינמיקה של מה שחי ומתעורר אצלנו בחדר.</p>
+</div>
+</section>
+
+<!-- SECTION 7: HIDDEN RABBIT — subtle, off to the side, not in empty space -->
+<div style="position:relative;height:0;overflow:visible">
+<span class="rabbit" onclick="document.getElementById('bhModal').classList.add('active')" title="🐇" style="position:absolute;left:24px;top:-40px">🐇</span>
+</div>
+<div class="modal-overlay" id="bhModal" onclick="this.classList.remove('active')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/800px-Black_hole_-_Messier_87_crop_max_res.jpg" alt="M87 Black Hole">
+</div>
+
+<!-- SECTION 8: THREE WISDOM TRADITIONS -->
+<section class="wisdom" id="traditions">
+<div class="container">
+<h2 class="stitle fade-in">3 חוכמות, מסורות ואנשים שילוו אותנו</h2>
+
+<!-- 8a: Jung -->
+<div class="wisdom-sub jung-section fade-in" style="margin-bottom:60px">
+<span class="icon">◯▣</span>
+<h3>1. קארל גוסטב יונג: השמאן המערבי</h3>
+
+<div style="margin:24px 0">
+<iframe src="https://www.youtube-nocookie.com/embed/vlmL5PnI4Hk?autoplay=1&mute=1&loop=1&playlist=vlmL5PnI4Hk" style="width:100%;aspect-ratio:16/9;border:none;border-radius:4px" allowfullscreen loading="lazy"></iframe>
+</div>
+
+<p>במהותו קרוב לליבי ומוזמן אנרגטית לתיבה.<br>
+ספרו האדום וספריו השחורים דרים וגרים כאן פיזית וגם מגיחים מעת לעת בצורות שונות ועוזרים לנו לפגוש עוד מהצל שלנו. עוד מהלא מודע הפרטי והקולקטיבי. להמשיך להאיר ולהעיר את מה שאני פוגש.ת כ-״אני״ דרך חוויה ישירה ולא דרך לימוד שכלי בלבד.<br>
+גם יונג המדען והפסיכולוג הדגול מוזמן לכאן וגם יונג המיסטיקן שקפץ ראש לתוך מעמקי המיסתורין של הקוד מקור של הבריאה והמציאות עצמה.<br>
+יונג הוא חלק משמעותי מאוד מהמסע הפרטי שלי ומעצב עד מאוד את אופן המפגש שלי עם המציאות הנגלית והנסתרת.</p>
+
+<p>הוא השאיר לנו "סימני דרך" (Breadcrumbs) שמותאמים לאדם המודרני לאיך לגשת לעומקים האלו.<br>
+במרחב הזה, אנחנו לא "לומדים" את יונג. אנחנו מנסים להתקרב לאיכות בה הוא התהלך בתוך עצמו.</p>
+
+<div class="expandable">
+<div class="expandable-header"><h3>עוד על יונג ועל המסע שלי איתו</h3><span class="expandable-icon"></span></div>
+<div class="expandable-content"><div class="expandable-content-inner">
+<h4 style="margin-bottom:12px;font-size:1.1rem">השמאן המערבי - קארל גוסטב יונג</h4>
+<p>אני פוגש את המונח שמאן (Shaman) כאדם שחי בין עולמות. בין העולם הגשמי לבין העולם הנסתר. אדם שהדלתות המובילות ל-מה שנמצא מעבר פתוחות לרווחה. השמאן הוא ציר, הוא גשר בין הזמנים האלו לבין מה שנמצא מחוץ לזמן. הוא מתקשר עם מים חיים, עם מעיין נובע.<br>
+הוא ער לאלגוריתם שנמצא סביבנו.<br>
+ועם ה-ערות הזו הוא הופך לצינור של חוכמה וריפוי. של אהבה עמוקה ואינטימיות קיומית. כהן שנע בצורה מודעת בתוך הקדושה.</p>
+
+<p>בעולם המערבי, השכל שלנו, הטכנולוגיה שלנו מאלחשים לנו את החיבור עד כדי איבודו הכמעט מוחלט.<br>
+יונג היה שם להחזיר לנו את ה-Thread, את חוט השני שמאפשר לנו להתחבר חזרה.<br>
+קארל יונג נכנס עמוק לתוך הפרדס, לתוך הנשגב, לתוך ה-לא מודע וחזר משם בחיים להעניק לנו עששיות שנוכל להיעזר בהן בכניסה לאותה האפלה. יונג לא ״הבין״ את התודעה האנושית, יונג ראה את התודעה האנושית.</p>
+
+<p>אפשר לומר שיונג חווה בשלהי העשור הרביעי בחייו פסיכוזה שפירקה את יסודותיו והעמיקה את ישותו.<br>
+יונג הוא שמאן מערבי, מיסטיקן מערבי שנקרא ונענה לפגוש חוויה דתית ישירה. לא תיאוריה, לא פילוסופיה אלא מפגש בלתי אמצעי עם מה שאינו מכאן אבל נוכח בהכול.</p>
+
+<h4 style="margin:24px 0 12px;font-size:1.1rem">המסע שלי עם קארל יונג</h4>
+<p>את יונג הכירה לי מישהי ששחתה עם יונג בעמוקים. היא הייתה עבורי גשר בדמות אדם שתיווכה לי, או יותר נכון אפשרה לי גישה ראשונית להעמיק בעצמי בעומקי התודעה ובמפגש עם יונג כדמות מלווה למקומות האלו.<br>
+יונג חי בשבילי. הוא נוכח בחיי. לא רק דמות האדם שלו והאישיות שלו אלא המודל האנושי שנוצר בדמותו, האנרגטיקה שעברה דרכו. גרסה של ה-יצירה שלו, ׳הספר האדום׳ שלו מסתובבת איתי במשך כמה שנים כמעט לכל מקום אליו אני הולך ומלווה אותי בתוך מרתפי הנפש.</p>
+
+<p>יש מרחבים במסעו של אדם לתוך מעמקי נפשו ומעמקי ה-לא מודע אליהם הוא הולך לבד.<br>
+הוא נדרש להשיל מעליו את עיטוריו ותכשיטיו, את חבריו ואת ידיעותיו ולהיכנס ערום.<br>
+וככל שמעמיקים יותר, מתערטלים עוד ועוד.</p>
+
+<p>הוא אדם אהוב מאוד מאוד עליי.</p>
+
+<div style="margin-top:24px">
+<iframe src="https://www.youtube-nocookie.com/embed/odvG452uZOM" style="width:100%;aspect-ratio:16/9;border:none;border-radius:4px" allowfullscreen loading="lazy"></iframe>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- 8b: Judaism -->
+<div class="wisdom-sub fade-in" style="margin-bottom:60px">
+<span class="icon">פ</span>
+<h3>2. יהדות ועבריות</h3>
+
+<p>היהדות והעבריות בחוכמתם העתיקה והעמוקה נוכחות כאן מאוד. הן מהסוד והקבלה והן מהחוכמה הנגלית יותר של חז״ל והשורשים השונים.<br>
+אני חווה את היהדות והעבריות כמעיין חוכמה עתיקה המחברת אותנו לנסתר יחד עם קרקוע חוזר ונשנה בתוך החיים עצמם.<br>
+בנוסף, היהדות והעבריות והישראליות הם הקונטקסט עליו התפתחה ונבתנה הרבה מתודעתנו ובטח המבנה האגואי והאישיות שלנו.<br>
+יש לנו שם ארנסל עמוק של מידע, של שפה, של עומק, חוכמה, סיפורים של דמויות מיתיות והיסטוריות שמשקפים לנו את הpsyche שלנו.<br>
+וזה מרגיש חי. זה לא מת. ומרגיש שכחברה שכחנו איך לגשת אך העתיקות נגישה.<br>
+ויש זכות גדולה בזמינות של שפה בת אלפי שנים שפשוט נוכחת לנו.</p>
+
+<p>אני מוצא את עצמי לא ב-״בחירה״ לגשת למקומות האלו אלא זה פשוט כבר מושרש בי ובנו.<br>
+ולא, זו לא התקרבות ל-״צורה״ הספציפית בה ה-״דת״ מוגשת לנו כיום אלא להתקרבות ל-Hard Disk שקיים בבסיסה.</p>
+
+<p>מה שנוכח כאן אלו לא שיעורי גמרא ומשנה, הרטט עצמו נוכח בחוויתי.<br>
+אני חווה שהיהדות עוזרת לנו להיכנס בשלום לפרדס ולצאת ממנו בשלום וגם לחבר הכל לחיים עצמם.</p>
+</div>
+
+<!-- 8c: Trans-Himalayan -->
+<div class="wisdom-sub fade-in">
+<span class="icon">⛰</span>
+<h3>3. המסורת הטרנס-הימלאיית ותרבות ה-Temples</h3>
+
+<p>המילה ׳מקדש׳, Temple, אוחזת קונוטציה מאוד ספציפית למישהו/מישהי עם קונטקסט יהודי/ישראלי. רובנו מורגלים לתמונה מאוד ספציפית שעולה בתודעתנו למולה.<br>
+המפגש שלי עם המילה (הרטט) - מקדש (Temple) היא בעיקר דרך התחברות והתקדשות אינטימית שמתרחשת ביני לבין המקום.<br>
+איזה חיבור ל-Life Force, לזרם החיים שזורם ופתאום נגלה לנו ולוקח אותנו איתו.<br>
+שפתאום מעיר אותנו למשהו.<br>
+בשנים האחרונות השתתפתי בצורות שונות במרחבי טרנספורמציה מהסוג הזה. חלק גדול ומהותי מאותם המרחבים היו מחוברים ב-core שלהם למסורת וגוף חוכמה שנקרא - Trans-Himalayan Teachings.<br>
+המסורת הזו אוחזת בתוכה כתבים ולימוד שאני מוצא חיבור אליהם ומפעם לפעם הם מונכחים דרכי בחלל בו אני נמצא.</p>
+</div>
+
+</div>
+</section>
+
+<!-- SECTION 9: WHAT IT'S NOT -->
+<section class="not-section">
+<div class="container fade-in">
+<h2 class="stitle">מה WHITE ROOM הוא לא</h2>
+
+<p>המרחב שאנו יוצרים מונחה על ידי מה שעולה (Arising).<br>
+במרחב כזה עלולים לעלות רגשות עזים, סיפורים עם עוצמה וטריגרים שונים.</p>
+
+<p>ישנה החזקה של המרחב ורצון להעניק תשומת לב משמעותית,<br>
+אך נדרשת אחריות אישית של כל משתתף.</p>
+
+<p><strong>חשוב להבהיר: זהו מרחב טרנספורמטיבי, לא טיפולי-קליני.</strong><br>
+אין התיימרות לספייס להיות פתרון לטראומות מורכבות.<br>
+אם ישנה טראומה משמעותית פעילה,<br>
+או חשש שהשתתפות במרחב אינטנסיבי עלולה להשפיע לרעה,<br>
+אני מזמין אותך לבדוק עם המטפלים ואנשי המקצוע בחייך לפני ההרשמה.<br>
+מרחבים מהסוג הזה עשויים להיות מאוד רגועים, אבל גם מאוד מטלטלים.</p>
+</div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SECTION 10: ABOUT MISHKA -->
+<section class="section" id="about">
+<div class="container fade-in">
+<h2 class="stitle">שיתוף עליי - מי שמנווט ומחזיק את המרחב</h2>
+<p class="tc" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-bottom:32px">מיכאל מישקה מלמדוב</p>
+
+<div class="about-photo">מ.מ</div>
+
+<p>שנות ה-20 המוקדמות שלי גיליתי את עולמות ההתפתחות האישית הרציונלית ואת משחק הקפיטליזם.<br>
+בשנת 2016, בתוך המשחק הגדול הזה מצאתי גם את מגרש המשחקים שלי והמרחב בו אני הולך ״לבנות את עצמי״. המגרש הזה היה - המרחב העסקי של עולמות הדיגיטל, הקורסים, הסדנאות, המנטורינג ועסקי השירות בישראל.</p>
+
+<p>דרך תפיסות המציאות בתוך המגרש הזה, הגדרתי בצורה לא מודעת את גבולות הגזרה שלי, הרכבתי לי ״משקפי התודעה״ עם מסגרת נוקשה ויצאתי לצוד ולבנות.<br>
+בכמעט 7 שנים יזמתי, ניהלתי והייתי שותף בסדר גודל של 10 פעילויות וחברות עסקיות שייצרו הכנסות מצטברות של כמה עשרות מיליונים.</p>
+
+<p>סביב אמצע גיל 28 הגיע לו רגע שהרחיב לי את התודעה בצורה רדיקלית, צורה שלא אפשרה לי לחזור ל-״עסקים כרגיל״ ולשגרה שהייתה לי. יזמתי פירוק של מסגרת החיים שהייתה לי ויצאתי למסע מחוץ לגבולות ישראל ומחוץ לגבולות התודעה שאחזה בי חזק עד אותה העת.</p>
+
+<p>בכמעט 4 שנים האחרונות אני full-on על המסע הפנימי שלי שעכשיו גם רוקם עור וגידים בעולם החיצוני.<br>
+אני עובר דרך שמרכזה היא עבודת צל - גילוי עוד ועוד של חלקים שונים בי שלא היו באור, לא היו במודע.<br>
+מסוף שנת 2024 אני עובד עם אנשים ומלווה אותם בעבודת צל במתכונות שונות, חלק בקבוצה וחלק ב1 על 1.</p>
+
+<p>ולגבי ה-WR שלנו, אני מאוד אוהב את המילים הפשוטות של Terence Mckenna שאמר משהו בסגנון של "nobody knows what's going on!" ויחד עם ההדהוד שלו, הבקשה שלי כאן ב-WHITEROOM היא לשחק, להגמיש, למתוח, לקרוע לעיתים, את הדינמיקה המאוד מוכרת של ״המורה״/״מנחה״ וה-״תלמידים״.<br>
+אבל באותו הזמן יש בי משהו שמבקש להיות יחד בתוך התעלומה, בתוך ה-mystery.</p>
+
+<div class="expandable" style="margin-top:24px">
+<div class="expandable-header"><h3>לקרוא עוד ולהעמיק בסיפור ובתנועה שלי בשנים האחרונות</h3><span class="expandable-icon"></span></div>
+<div class="expandable-content"><div class="expandable-content-inner">
+
+<p style="font-size:1.1rem;margin-bottom:16px">🪈 <strong>השנים המוקדמות</strong></p>
+<p>לפני מספר שנים ניהלתי והייתי שותף פעיל ב-6 חברות עסקיות בו זמנית עם שותפים רבים וצוות, יצרתי תוכן בכמות משמעותית, הנחתי מספר פודקאסטים כל שבוע, חייתי בדירה מאוד מגניבה בתל אביב, הייתי בזוגיות שהרגישה שהיא ״זה״, נעתי בתנועה כלכלית משמעותית באישי ובהגדלה קונסיסטנטית של ׳המעמד׳ והנטוורק שלי בצורה שהרגישה יציבה, ברורה ועם אופק אופטימי. שיחקתי עם מספרים שהרגישו לי גדולים בגיל צעיר (24-28) והייתה חוויה מאוד ישירה שאני ׳מונח׳ במקום שהוא מעולה.</p>
+
+<p>הייתי גבר צעיר שגדל במשפחה עם תודעה סובייטית יהודית והכוונה מגיל צעיר למקצוע הרפואה והרגשתי יחסית מוקדם שאין לי על מה להישען מהבית ושמה שקיבלתי בבית לא שייך למה שאני מרגיש בפנים. יצאתי בתנועה נגדית. מורדת.<br>
+חיפשתי כיוון, חיפשתי איזו מסגרת חשבתית, איזו תפיסת מציאות, שתתן לי בהירות ו-ודאות לנוע בתוכה.</p>
+
+<p>בבסיס שלי הייתה הגישה ראציונאלית ואקזסטנצאליסטית (רדודה) שפגשה וניתחה כל דבר ב-׳ערכים׳ וב-׳היגיון׳.<br>
+מסביב לרציונליות הטבעית התחילה לעטוף אותי פילוסופיה קפיטליסטית. מה שהיה קדוש עבורי בתקופה היה ׳מריטוקרטיה׳. מריטוקרטיה בבסיסה אומרת שהמערכת צריכה לתגמל על הישגים ולא על ייחוס. הרגשתי שאני בשליטה.</p>
+
+<p>התחלתי לעבוד בלבנות את עצמי ואת החיים שלי על פי הגישות והתפיסות האלו. הם היו האלים שלי. להם סגדתי. אחריהם רדפתי.<br>
+והאלילים שלי היו יזמים מוצלחים, חוקרים שפיתחו מודלים ראציונלים, ספורטאים ולמעשה מצטיינים בתחומים שונים. הישגיות היא שגרמה לי לבטא הערכה.</p>
+
+<p>החיים שלי היו מלאים מאוד עבורי ואושר וסיפוק היו מנת חלקי.<br>
+ספקות, חרטות ושאלות מערערות פחות ליווי אותי. תפיסת המציאות שלי הייתה ברורה.<br>
+המון קסם היה בתקופה ההיא, המשחק עם החיים, היצירה, ההנעה של רעיון למציאות והתחושה שאני ׳אוכל את החיים׳ סיפקה אותי מאוד.</p>
+
+<p style="font-size:1.1rem;margin:24px 0 16px">👁 <strong>האירוע המכונן והשנים האחרונות</strong></p>
+<p>חיפשתי לחוות חוויה פיסכדלית אך במקום חוויה מצאתי את עצמתי בניפוץ.<br>
+החוויה הפכה לתהליך שלקח לי זמן להבין שהוא תהליך טיפולי. המטפלת שלי, המדריכה שלי, עזרה לי בעדינות ובנוקבות אוהבת להיכנס לעומקים של מה שלא ידעתי שקיים. בי ובכלל.</p>
+
+<p>התהליך יצר סדק שערער את האדמה המדומינת שעמדתי עליה והרים את הפרגוד מאחורי הקוסם מארץ עוץ הפרטי שלי.<br>
+בהתחלה זו הייתה התרחבות אגואית מפליאה שגרמה לי להרגיש שיש לי גישה לידע ולעולמות שהולכים להפוך את המציאות שלי לעוד יותר מפוארת. שקיבלתי כוחות על.</p>
+
+<p>ואחרי מספר חודשים בתוך מין סוג של ׳מאניה׳ ושגעון גדלות קטן, הגיע לו תו אחד מאוד ספציפי שלאחריו היה לי ברור שכל מה שנוצר סביבי ודרכי מתבקש להסתיים ולהתפרק.<br>
+ה-תו הזה שנשמע בתוכי הצניע ועינו אותי וגם הפחיד אותי עד מאוד. הבעית.<br>
+נחתה בתוכי ידיעה שמשהו אחר מבקש מקום בי. לא קריירה חדשה או זהות חדשה אלא משהו אחר.</p>
+
+<p>האופן שבו זה התחיל להתממש אצלי היה סיום ואיפוס של ההתחייבויות, המבנים ו-״הצורות״ שיצרתי.<br>
+תוך מספר חודשים במהירות דיי מטורפת - החברות והשותפויות הסתיימו, הזוגיות הסתיימה, מבנה החיים הקודם הפסיק. נקנה לו one-way ticket מחוץ לישראל למסע פיזי ופנימי — תקופה בבלקן ובאי מאוד אהוב ביוון, כמה רגעים בתאילנד, תקופה ממושכת בניוזילנד מספר פעמים, עצירה בג׳ונגלים של פרו, במונגוליה ובעוד מקומות שונים שהוזמנתי והגעתי אליהם בדרכים שונות.</p>
+
+<p>התנועה הזו לקחה אותי ברמה החיצונית להרפתקאות שונות ומשונות - ולחוויות שהיו מחוץ ל-סקופ של מה שידעתי שבן אדם יכול לחוות. התרחבויות של הלב, גבהים מופלאים, עמקים מטלטלים, רגעי סף שיגעון ואף שיגעון מבעיתים.<br>
+היה בי משהו שהיה פשוט ברכיבה על גל ארוך ומורכב שמעניו אותי, מלמד אותי, מפרק אותי, מרכיב אותי, מרחיב אותי, מצמצם אותי, אוהב אותי ומגלה אותי עוד ועוד ועוד.</p>
+
+<p>המפגש הפנימי הזה עם הנסתר שלי ושלנו, עם ה-לא מודע הפרטי והקולקטיבי, הרחיבה לי את חווית המציאות בצורה שהיא גם נפלאה ומפליאה, ומרגשת ואוהבת ובאמת ובתמים שמרגישה כמו נס. וגם מערערת ומענוות בצורה שלעיתים מתבטאות כמו גיהנום.</p>
+
+<p>הטריפ המשיחי ההתחלתי של ״וואו!! איך לא כולם חווים את זה?״ דיי מהר התחלף ב-vision ובבהירות שרואה וחווה לא רק את האור אלא גם את האופל.<br>
+היא כן מובילה לחוויה של אינטימיות עמוקה, של ערות, של חיות, של אהבה, של אמת ושל סיפוק של איזו כמיהה עמוקה שנראה שתמיד הייתה בתוכי רק לא הייתה נגישה לי ברמה המודעת.<br>
+חיה בי ערגה, או אולי מדויק יותר להשתמש במילה מאנגלית - Longing שמרגישה כמו פיצ׳ר שהורכב בתוך היישות שאני לחפש ולהגיע לאיזה מעיין שיש בו מים חיים.</p>
+
+<div class="quote-block" style="border-right-color:#555;color:#b0a898">
+"No tree, it is said, can grow to heaven unless its roots reach down to hell"<br>— C.G. Jung
+</div>
+
+<p style="font-size:1.1rem;margin:24px 0 16px">◉ <strong>והיום</strong></p>
+<p>אספתי המון נקודות ייחוס לרגעים למצבי תודעה שונים שהיום אני לומד איך לייצב אותם בתוך חיים אוהבים שמרגישים בריאים.<br>
+אני עוד מלקק את הפצעים שלי מה-׳פתיחה׳ וה-׳קריעה׳ שהתרחשה ומתרחשת בי, מה-Rapture שאני חווה.<br>
+אני עוד לומד איך להרכיב את החיים עצמם סביב מה שזמין לי עכשיו וסביב מה שבהיר לי יותר עכשיו.<br>
+לומד איך להתפרס בצורה שמרגישה בהלימה ואיך לאפשר למה שער בי לקבל ביטוי גם בעשייה.<br>
+ואני חווה גם שאני מתחיל ׳לקרוא׳, לנגן איזה תו ולקרוא לאנשים, לאיזו קהילה, לאיזו שכונה אנרגטית לקרום עור וגידים בסביבתי.</p>
+
+<p>כרגע אני התיישבתי לי בתל אביב במקום מתוק מאוד שנקרא ׳תיבת נח׳ שמרגיש כמו ׳חדר לידה׳ קטן ובו אני פוגש אנשים בצורות שונות.<br>
+אני עושה עבודה עם אנשים והגישה של קארל יונג לטיפול ול-Analysis חיות בי מאוד.</p>
+
+<p>ולגבינו וה-WHITE ROOM שלנו, נאמר לי פעם על ידי אדם מאוד קרוב אליי שהוא עובד עם אנשים כדי שיהיה לו חברים. אני מרגיש שחלק מהמהות והיצירה של הוויט-רומס עבורי היא כזו.<br>
+זה מרגיש כמו רצון עז של לידה של חללים, של מרחבים בהם אנשים יכולים להופיע קצת יותר בתור מה שהם בעומק שלהם.<br>
+מקום שאפשר להוליד בו את מה שכבר קיים.</p>
+</div></div>
+</div>
+
+</div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SECTION 11: FOR WHOM -->
+<section class="section">
+<div class="container fade-in tc">
+<h2 class="stitle">עבור מי המרחב הזה נוצר?</h2>
+
+<p>מי שהייתי מבקש שיצטרפו לקונטיינר הזה אלו אנשים שהאינטואיציה שלהם מהדהדת בתוכם להצטרף.<br>
+אני סומך על זה יותר מאשר כל רציונליזציה אחרת.<br>
+ואם בכל זאת להוסיף קצת מילים:<br>
+מי שמרגיש שיש בו משהו שמבקש עומק, גובה ורוחב.</p>
+
+<p style="margin-top:24px;font-size:1.1rem">אז אם עומק הוא משהו שמהדהד בך,<br>
+אם יש איזו כמיהה למשהו אמתי יותר,<br>
+אם יש ערגה, Longing,<br>
+שמהדהד בפנים לשאול ולחפש,<br>
+<strong>יונג ואני עשויים להיות עוגן עבורכם.</strong></p>
+</div>
+</section>
+
+<div class="visual-break"></div>
+
+<!-- SECTION 12-13: THIS WHITE ROOM — SET & SETTING -->
+<section class="section" id="setsetting" style="background:#f8f8f8">
+<div class="container fade-in">
+<h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:300;text-align:center;margin-bottom:16px;letter-spacing:.08em">This White Room</h2>
+<p class="tc" style="font-size:1.3rem;font-family:'Frank Ruhl Libre',serif;color:#555;margin-bottom:48px">Set & Setting</p>
+
+<p>כפי שנכתב מעלה, ה-White Room הוא קונטיינר, הוא חלל ריק ומבודד מהעולם שמאפשר לקבוצה של אנשים לבנות אינטימיות וללדת עוד ועוד חלקים שלהם בתוך מרחב עם עוצמה של ביחד.<br>
+ולכל White Room יש ייחודיות חדשה, כל White Room הוא למעשה ישות חד פעמית שמורכבת מהגדרה של:<br>
+<strong>Set</strong> (התכווננות, נושאי מסגרת)<br>
+ו-<strong>Setting</strong> (הגדרות המסגרת)</p>
+
+<div class="sep"></div>
+
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;text-align:center;margin-bottom:24px">The Set</h3>
+
+<p>הסט שלנו הוא מה שמתחיל להכווין אותי כמנחה ו-facilitator ליצור את התוכן והמבניות של המסע המשותף שלנו. דרך התמא (theme) מתחילה להיווצר ההבנה של לאן אנחנו מגיעים ומה ההתכווננות.</p>
+
+<!-- Mirror theme box -->
+<div class="theme-box" style="margin:32px auto">
+<div class="theme-label">נושא (theme) ה-WHITE ROOM הנוכחי:</div>
+<div class="theme-title">Invoking the unconscious | מזמנים את ה-לא מודע</div>
+<div class="theme-sub">מסע דרך פירורי הלחם שהשאיר לנו קארל יונג</div>
+<div class="theme-date">12-13-14 למרץ 2026</div>
+</div>
+
+<div class="sep"></div>
+
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;text-align:center;margin-bottom:24px">The Setting</h3>
+
+<p>הסטינג שלנו הוא ההגדרות הקשיחות יותר שמציירות לנו את גבולות הגזרה המוצקים יותר, הארציים יותר שגם הם משפיעים על התדר של החלל.</p>
+
+<div class="settings-code" style="margin-top:32px">
+
+<div class="setting-line" onclick="this.classList.toggle('open')">
+<span><span class="setting-key">תאריך:</span> <span class="setting-val">12-14/03/2026</span></span>
+<span class="expandable-icon" style="color:#555"></span>
+</div>
+<div class="setting-expand">חמישי עד שבת, מרץ 2026.</div>
+
+<div class="setting-line" onclick="this.classList.toggle('open')">
+<span><span class="setting-key">מיקום:</span> <span class="setting-val">תיבת נח, תל-אביב</span></span>
+<span class="expandable-icon" style="color:#555"></span>
+</div>
+<div class="setting-expand">תיבת נח נבנתה בידיו של האמן נועם שיוביץ מעץ ממוחזר. זהו מקדש קטן בלב תל אביב, מין "מאיץ חלקיקים" לתנועה פנימית. המרחב הזה הוא גם ביתי וגם המקום בו אני פוגש אנשים לעבודה משותפת.</div>
+
+<div class="setting-line" onclick="this.classList.toggle('open')">
+<span><span class="setting-key">משך:</span> <span class="setting-val">3 ימים (ריטריטון)</span></span>
+<span class="expandable-icon" style="color:#555"></span>
+</div>
+<div class="setting-expand">ריטריטצ׳יק: 24 שעות ליומיים. טבילה רגעית באינטימיות.<br>ריטריטון: שלושה-ארבעה ימים.<br>ריטריט: חמישה ימים ומעלה.</div>
+
+<div class="setting-line" onclick="this.classList.toggle('open')">
+<span><span class="setting-key">סוג המרחב:</span> <span class="setting-val">טרנספורמציה וחקירה גמישה</span></span>
+<span class="expandable-icon" style="color:#555"></span>
+</div>
+<div class="setting-expand">טרנספורמציה מדברת על שינויים שהם משנים ברמה העמוקה של העניין. הם לא העשרתיים אלא ראדיואקטיביים. חקירה גמישה — אנחנו נכנסים לחלל שיש בו משאבים, אנשים, ידע, אנרגיות ואנחנו מתחילים להקשיב יחד לאיפה ה-Life Force מוביל אותנו.</div>
+
+<div class="setting-line" onclick="this.classList.toggle('open')">
+<span><span class="setting-key">ניסיון נדרש:</span> <span class="setting-val">ללא צורך בניסיון מקדים</span></span>
+<span class="expandable-icon" style="color:#555"></span>
+</div>
+<div class="setting-expand">פתוח לכולם: הזמנה פתוחה. אין דרישה לניסיון קודם בעולמות התוכן האלו.</div>
+
+<div class="setting-line" onclick="this.classList.toggle('open')">
+<span><span class="setting-key">מיועד למין:</span> <span class="setting-val">כולם</span></span>
+<span class="expandable-icon" style="color:#555"></span>
+</div>
+<div class="setting-expand">⚧⚦⚥⚤⚣♂⚨⚩</div>
+
+<div class="setting-line" onclick="this.classList.toggle('open')">
+<span><span class="setting-key">פלפלים:</span> <span class="setting-val">ללא פלפל</span></span>
+<span class="expandable-icon" style="color:#555"></span>
+</div>
+<div class="setting-expand">ללא פלפל: ללא נגיעה במיניות או עירום.<br>פלפל עדין: עבודה עם גוף (sensuality), ללא מיניות.<br>חריף: מרחב שמאפשר עירום ופתיחות מינית.</div>
+
+<div class="setting-line" onclick="this.classList.toggle('open')">
+<span><span class="setting-key">מדד ה-Life:</span> <span class="setting-val">גמיש</span></span>
+<span class="expandable-icon" style="color:#555"></span>
+</div>
+<div class="setting-expand">המתח שבין סדר לכאוס. יש שלד ומסגרת ברורים, אבל יש מקום לשינויים בהתאם לצורך שעולה.</div>
+
+</div>
+</div>
+</section>
+
+<!-- SECTION 15: LOGISTICS -->
+<section class="logistics" id="logistics">
+<div class="container fade-in">
+<h2 class="stitle">לוגיסטיקה</h2>
+
+<div style="display:grid;gap:24px;margin-bottom:32px">
+<p><strong>מתי:</strong> 12-13-14/03/2026 (חמישי-שבת)<br>
+<strong>שעות:</strong> התכנסות בחמישי ב-12:30 (מתחילים ב-13:00). סיום בשבת עד 17:00<br>
+<strong>איפה:</strong> "תיבת נח", פלורנטין, תל-אביב</p>
+
+<p>כיום אני מתגורר ופוגש אנשים בתיבת נח בתל אביב. המקום הזה הוא גם המרחב בו נפגש וגם המקום בו אני גר. אני מזמין אתכם אליי הביתה. למקדש בו אני מתארח.</p>
+
+<!-- Tivat Noach photos -->
+<div style="margin:24px 0;text-align:center">
+<a href="https://drive.google.com/drive/folders/1GxoxpfMiC6JU7h1ZVBxnT7ZH7BZ_6f54" target="_blank" style="display:inline-block;padding:12px 24px;border:1px solid #8b6f47;border-radius:4px;color:#5a4a3a;font-size:.9rem;transition:background .3s">📷 תמונות של תיבת נח</a>
+</div>
+
+<p><strong>לינה:</strong><br>
+ניתן ורצוי להישאר לישון יחד בתוך המרחב המשותף. לקראת הלילה אנחנו נעשה טרנספורמציה לחלל ונעביר אותו למצב ׳שינה׳ משותפת. המרחב הוא ללא חדרים אלא open-space.<br>
+ישנם מזרונים אישיים לשינה + סמיכות וכיסויי עיניים. מזמין בחום שנישאר כמה שיותר לישון יחד כדי לשמור על הבועה האנרגטית בתוך הקונסטרקט שלנו. (מצעים אישיים יבורכו)</p>
+
+<p><strong>עלות:</strong><br>
+<span style="font-size:1.5rem;font-family:'Frank Ruhl Libre',serif">750 ₪</span><br>
+לריטריט כולל הלינה המשותפת.<br>
+*כולל מע״מ למי שאינו מזדכה על החשבונית<br>
+*+מע״מ (885 ש״ח) למי שיש עסק פטור או מורשה ומזדכה על החשבונית<br>
+הבחירה בתשלום עם או בלי מע״מ על בסיס אמון</p>
+
+<p style="font-style:italic;color:#5a4a3a;font-size:.95rem">אני עושה עבודה עם עצמי עבודה עם תמחורים ומנסה עוד להבין מה מרגיש לי ראוי, נכון, מכבד אותי ואת העיסוק בדבר שאני מבקש שנעסוק בו בתוך ה-White Room. ישנה אנרגיה רבה בליצור אירועים מהסוג הזה ויחד עם זאת מרגיש לי שהנגישות צריכה להיות ברורה. כרגע זה המחיר.</p>
+
+<p><strong>אוכל:</strong> תוספת של 150 ש"ח (50 ליום) לאוכל חברתי לכל השהות (PayBox משותף יפתח לקראת ההתכנסות). תהיה ארוחה אחת ביום שתהיה מאורגנת ופריסה, פירות, נשנושים ואגוזים לאורך היום. אין לנו אנשי הפקה.</p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 16: REGISTRATION FORM -->
+<section class="section" id="register" style="background:#0a0a0a;color:#e0d8cc">
+<div class="container fade-in">
+<h2 class="stitle" style="color:#e0d8cc">התחלת תהליך רישום</h2>
+<p class="tc" style="margin-bottom:32px;color:#999">חשוב לי להכיר את האנשים שמבקשים להירשם, ולו במעט.<br>
+לאחר השארת הפרטים הראשונית נתאם שיחה קצרה של 10-20 דקות לבדיקת התאמה ואישור ההרשמה.</p>
+
+<form class="reg-form" action="https://formsubmit.co/mishka@example.com" method="POST">
+<input type="hidden" name="_subject" value="WHITE ROOM — רישום חדש">
+
+<label>שם מלא</label>
+<input type="text" name="name" required>
+
+<label>טלפון</label>
+<input type="tel" name="phone" required>
+
+<label>מייל</label>
+<input type="email" name="email" required>
+
+<label>האם התאריכים והזמנים מתאימים לי?</label>
+<select name="dates_ok" required>
+<option value="">בחר/י...</option>
+<option value="כן">כן</option>
+<option value="לא">לא</option>
+<option value="צריך לוודא">צריך לוודא</option>
+<option value="צריך לשוחח על זה">צריך לשוחח על זה</option>
+</select>
+
+<label>מה האינטואיציה שלך אומרת לך?</label>
+<textarea name="intuition"></textarea>
+
+<label>היסטוריה ורקע של מה שמגדירה הרפואה המערבית כ-״מחלות נפשיות״. והאם מטופל.ת תרופתית?</label>
+<textarea name="mental_health" placeholder="מה שמרגיש נוח לשתף, אפשר גם טלפונית."></textarea>
+
+<label>שיתוף: היסטוריית טיפול/אימון, השתתפויות עבר בקורסים/סדנאות/ריטריטים, מסורות רוחניות שיש לך חיבור אליהן, האם כרגע נמצא.ת בתהליך?</label>
+<textarea name="history"></textarea>
+
+<label>מה קראת מתוך הטקסט בדף? האם עולה משהו לשתף בעקבותיו?</label>
+<textarea name="feedback"></textarea>
+
+<label>שנת לידה</label>
+<input type="number" name="birth_year" min="1950" max="2010">
+
+<div class="checkbox-row">
+<input type="checkbox" required id="consent">
+<label for="consent" style="font-weight:400;font-size:.9rem;margin-bottom:0">קראתי את האזהרה לגבי אופי המרחב, אני מבין/ה שזהו מרחב טרנספורמטיבי ולא טיפולי. ואני לוקח/ת אחריות אישית מלאה על השתתפותי.</label>
+</div>
+
+<button type="submit" class="big-red-btn">ENTER THE WHITE ROOM</button>
+</form>
+
+<p class="tc" style="margin-top:24px;font-size:.9rem;color:#888">*מוזמנים לשלוח הודעה למספר <a href="https://wa.me/9720525382793" style="color:#a0ffa0">052-538-2793</a> לשאלות ספציפיות</p>
+
+<!-- Cosmos embed as video/gif per doc -->
+<div style="text-align:center;margin-top:32px">
+<iframe src="https://www.cosmos.so/e/106005443" style="width:100%;max-width:400px;aspect-ratio:1/1;border:none;border-radius:8px" loading="lazy" allowfullscreen></iframe>
+</div>
+</div>
+</section>
+
+<!-- SECTION 17: CREDITS + FOOTER -->
+<div class="credits">
+<h4>קרדיטים</h4>
+<p>סידור וארגון קופי: דני ארגמן</p>
+<p style="margin-top:12px">ארט וורק ותמונות:</p>
+<ul style="list-style:none;padding:0;margin:8px 0;line-height:2.2">
+<li><a href="https://www.cosmos.so/e/337935681" target="_blank">Dave Danzara</a></li>
+<li><a href="https://www.instagram.com/innertel/" target="_blank">@innertel</a></li>
+<li><a href="https://www.pinterest.com/furkancavli/" target="_blank">Furkan Cavli</a></li>
+<li><a href="https://www.instagram.com/adamrichesart/" target="_blank">Adam Riches</a></li>
+<li><a href="https://www.redbubble.com/i/photographic-print/Exile-by-Theclayshaper/79443049.ZRLK5" target="_blank">TheClayshaper</a></li>
+<li><a href="https://www.cosmos.so/e/848807712" target="_blank">Maria Gonzalez</a></li>
+<li><a href="https://www.cosmos.so/e/106005443" target="_blank">Socha_animation</a></li>
+<li><a href="https://www.cosmos.so/e/929649193" target="_blank">Vasily Kafanov (Smashing Pumpkins 'Machina')</a></li>
+<li><a href="https://www.cosmos.so/e/1174517888" target="_blank">Mfgaede</a></li>
+<li><a href="https://www.cosmos.so/e/2047800014" target="_blank">Miko Maciaszek — Consumption (2021)</a></li>
+<li><a href="https://www.instagram.com/lwizst" target="_blank">Lwizst</a></li>
+<li>Carl Jung — The Red Book</li>
+<li>Gustave Doré — Rosa Celeste</li>
+</ul>
+</div>
+
+<footer>
+<p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#888;margin-bottom:8px;direction:ltr">WHITE ROOM</p>
+<p>© 2026 Michael (Mishka) Malmdov</p>
+<p style="margin-top:12px">Take me Back to: <a href="#setsetting" style="color:#888;text-decoration:underline">Settings</a> | <a href="#" style="color:#888;text-decoration:underline">Art & Feel</a></p>
+</footer>
+
+<script>
+// Fade-in observer
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Expandable sections
+document.querySelectorAll('.expandable-header').forEach(h=>{
+h.addEventListener('click',()=>h.parentElement.classList.toggle('open'))
+});
+
+// Nav show on scroll
+const nav=document.getElementById('topNav');
+window.addEventListener('scroll',()=>{
+nav.classList.toggle('visible',window.scrollY>window.innerHeight*.7)
+},{passive:true});
+</script>
+</body>
+</html>
